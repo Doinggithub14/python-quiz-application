@@ -9,9 +9,10 @@ class QuizApp:
     def startup(self):
         # print the greeting at startup
         self.greeting()
-
+        self.username = input("What's your name? ")
+        print(f"Welcome, {self.username}!")
         # TODO: ask the user for their name
-
+        print()
     def greeting(self):
         print("-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~")
         print("~~~~~~ Welcome to PyQuiz! ~~~~~~")
@@ -40,6 +41,37 @@ class QuizApp:
         # TODO: get the user's selection and act on it. This loop will
         # run until the user exits the app
         selection = ""
+        while(True):
+            selection = input("Enter your selection: ")
+            if len(selection) == 0:
+                self.menu_error()
+                continue
+            selection=selection.capitalize()
+            if selection[0]=='E':
+                self.goodbye()
+                break
+            elif selection[0]=='M':
+                self.menu_header()
+                continue
+            elif selection[0]=='L':
+                print("\n Available quizzes:")
+                #Todo list the quizzes
+                print("---------------------\n")
+                continue
+            elif selection[0]=='T':
+                try:
+                    quiznum=int(input("Enter the quiz number: "))
+                    print(f"You have selected quiz number {quiznum}")
+                    #Todo start the quiz
+                except:
+                    self.menu_error()
+                    
+            else:
+                self.menu_error()
+                
+
+
+
 
 
     # This is the entry point to the program
